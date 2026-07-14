@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: baishi-website
+  branch: main
+
+media_folder: images
+public_folder: images
+
+locale: ru
+
+collections:
+  - name: site
+    label: Фотографии сайта
+    files:
+      - name: photos
+        label: Все фото
+        file: content/site.json
+        format: json
+        fields:
+          - name: cards
+            label: 1. Карточки товаров (главная страница)
+            widget: object
+            fields:
+              - { name: wallpaper, label: "N°01 — Самоклеящиеся обои", widget: image }
+              - { name: acoustic,  label: "N°02 — Акустические панели", widget: image }
+              - { name: lvt,       label: "N°03 — ЛВТ (пол)",           widget: image }
+              - { name: panels3d,  label: "N°04 — 3D-панели",           widget: image }
+
+          - name: album
+            label: 2. Альбом (галерея с перелистыванием)
+            widget: object
+            fields:
+              - name: wp
+                label: Вкладка «Обои»
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Фото, widget: image }
+                  - { name: code,  label: "Код модели (BS-8013)", widget: string, required: false }
+              - name: ac
+                label: Вкладка «Акустика»
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Фото, widget: image }
+                  - { name: code,  label: Код модели, widget: string, required: false }
+              - name: lvt
+                label: Вкладка «ЛВТ»
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Фото, widget: image }
+                  - { name: code,  label: "Код модели (YSD-3040)", widget: string, required: false }
+              - name: td
+                label: Вкладка «3D-панели»
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Фото, widget: image }
+                  - { name: code,  label: Код модели, widget: string, required: false }
+
+          - name: about
+            label: 3. Страница «О компании» — фото производства
+            widget: object
+            required: false
+            fields:
+              - { name: production,   label: "Производственный цех",  widget: image, required: false }
+              - { name: container,    label: "Загрузка контейнера",   widget: image, required: false }
+              - { name: clients,      label: "Встречи с клиентами",   widget: image, required: false }
+              - { name: team,         label: "Команда",               widget: image, required: false }
+              - { name: teambuilding, label: "Тимбилдинг",            widget: image, required: false }
+              - { name: warehouse,    label: "Склад и логистика",     widget: image, required: false }

@@ -1,0 +1,151 @@
+{
+  "cards": {
+    "wallpaper": "images/card-wallpaper.jpg",
+    "acoustic": "images/card-acoustic.jpg",
+    "lvt": "images/card-lvt.jpg",
+    "panels3d": "images/card-panels3d.jpg"
+  },
+  "album": {
+    "wp": [
+      {
+        "image": "images/album-wp-01.jpg",
+        "code": "BS-8013"
+      },
+      {
+        "image": "images/album-wp-02.jpg",
+        "code": "BS-8076-1"
+      },
+      {
+        "image": "images/album-wp-03.jpg",
+        "code": "BS-8078-2"
+      },
+      {
+        "image": "images/album-wp-04.jpg",
+        "code": "BS-80133"
+      },
+      {
+        "image": "images/album-wp-05.jpg",
+        "code": "BS-8092-1"
+      },
+      {
+        "image": "images/album-wp-06.jpg",
+        "code": "BS-8082-1"
+      },
+      {
+        "image": "images/album-wp-07.jpg",
+        "code": "BS-8085B"
+      },
+      {
+        "image": "images/album-wp-08.jpg",
+        "code": "BS-8076"
+      },
+      {
+        "image": "images/album-wp-09.jpg",
+        "code": "BS-8064-3"
+      },
+      {
+        "image": "images/album-wp-10.jpg",
+        "code": "BS-8064-1"
+      }
+    ],
+    "ac": [
+      {
+        "image": "images/album-ac-01.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-02.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-03.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-04.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-05.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-06.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-07.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-08.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-09.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-ac-10.jpg",
+        "code": ""
+      }
+    ],
+    "lvt": [
+      {
+        "image": "images/album-lvt-01.jpg",
+        "code": "YSD-2025-1"
+      },
+      {
+        "image": "images/album-lvt-02.jpg",
+        "code": "YSD-3009-2"
+      },
+      {
+        "image": "images/album-lvt-03.jpg",
+        "code": "YSD-3010"
+      },
+      {
+        "image": "images/album-lvt-04.jpg",
+        "code": "YSD-3013"
+      },
+      {
+        "image": "images/album-lvt-05.jpg",
+        "code": "YSD-3014-1"
+      },
+      {
+        "image": "images/album-lvt-06.jpg",
+        "code": "YSD-3040"
+      },
+      {
+        "image": "images/album-lvt-07.jpg",
+        "code": "YSD-3040-1"
+      },
+      {
+        "image": "images/album-lvt-08.jpg",
+        "code": "YSD-3052"
+      },
+      {
+        "image": "images/album-lvt-09.jpg",
+        "code": "YSD-3057"
+      },
+      {
+        "image": "images/album-lvt-10.jpg",
+        "code": "YSD-3709"
+      }
+    ],
+    "td": [
+      {
+        "image": "images/album-td-01.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-td-02.jpg",
+        "code": ""
+      },
+      {
+        "image": "images/album-td-03.jpg",
+        "code": ""
+      }
+    ]
+  },
+  "about": {}
+}
