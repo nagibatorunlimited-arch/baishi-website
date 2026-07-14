@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: baishi-website
+  repo: nagibatorunlimited-arch/baishi-website
   branch: main
 
 media_folder: images
