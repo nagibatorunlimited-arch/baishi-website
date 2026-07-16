@@ -25,6 +25,7 @@ collections:
               - { name: acoustic,  label: "N02 - Acoustic panels",         widget: image }
               - { name: lvt,       label: "N03 - LVT flooring",            widget: image }
               - { name: panels3d,  label: "N04 - 3D panels",               widget: image }
+              - { name: floral,    label: "N05 - Floral wallpaper",        widget: image }
 
           - name: album
             label: "2. Photo album (gallery)"
@@ -58,6 +59,13 @@ collections:
                 fields:
                   - { name: image, label: Photo, widget: image }
                   - { name: code,  label: Model code, widget: string, required: false }
+              - name: floral
+                label: "Floral wallpaper tab"
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Photo, widget: image }
+                  - { name: code,  label: "Model code (e.g. KSJ-265032)", widget: string, required: false }
 
           - name: about
             label: "3. About page - factory and team photos"
