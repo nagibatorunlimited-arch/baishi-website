@@ -3,7 +3,8 @@
     "wallpaper": "images/card-wallpaper.jpg",
     "acoustic": "images/card-acoustic.jpg",
     "lvt": "images/card-lvt.jpg",
-    "panels3d": "images/card-panels3d.jpg"
+    "panels3d": "images/card-panels3d.jpg",
+    "floral": "/images/KSJ-265032.jpg"
   },
   "album": {
     "wp": [
@@ -143,6 +144,48 @@
       },
       {
         "image": "/images/画板 3.jpg",
+        "code": ""
+      }
+    ],
+    "floral": [
+      {
+        "image": "/images/KSJ-265007.1效果图.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265010.1效果图.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265039.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265040.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265020.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265010.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265012.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265013.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265014.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-265016.jpg",
         "code": ""
       }
     ]
