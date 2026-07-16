@@ -875,7 +875,7 @@
 </script>
 
 <script>
-(function(){
+window.__initAlbum = function(){
   var cats={};
   document.querySelectorAll('.al-cat').forEach(function(c){
     cats[c.dataset.cat]={el:c, slides:[].slice.call(c.querySelectorAll('.al-slide')), idx:0};
@@ -926,7 +926,7 @@
   var alDotsEl=document.getElementById('alDots'); if(alDotsEl) alDotsEl.addEventListener('click',alStart);
   alStart();
   render();
-})();
+};
 </script>
 
 <script>
@@ -1078,5 +1078,30 @@ var TEAM = [
   ['ru','en','zh'].forEach(function(l){var b=document.getElementById(l);if(b)b.addEventListener('click',function(){var c=sel.value;fillCountries(c);route();});});
   document.querySelectorAll('.lang-gate [data-lang]').forEach(function(b){b.addEventListener('click',function(){var c=sel.value;fillCountries(c);route();});});
   route();
+})();
+</script>
+
+<script>
+(function(){
+  function go(){ if(window.__initAlbum) window.__initAlbum(); }
+  fetch('content/site.json?v='+Date.now())
+    .then(function(r){if(!r.ok)throw 0;return r.json();})
+    .then(function(d){
+      if(d.cards) document.querySelectorAll('[data-img]').forEach(function(im){
+        var k=im.getAttribute('data-img').split('.')[1];
+        if(d.cards[k]) im.src=d.cards[k];
+      });
+      if(d.album) Object.keys(d.album).forEach(function(cat){
+        var box=document.querySelector('.al-cat[data-cat="'+cat+'"]');
+        var items=(d.album[cat])||[];
+        if(!box||!items.length) return;
+        box.innerHTML=items.map(function(it){
+          return '<figure class="al-slide"'+(it.code?' data-code="'+it.code+'"':'')+
+                 '><img loading="lazy" alt="" src="'+it.image+'"></figure>';
+        }).join('');
+      });
+    })
+    .catch(function(){})
+    .finally(go);
 })();
 </script>
