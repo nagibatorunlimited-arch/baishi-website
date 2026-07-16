@@ -2,8 +2,6 @@ backend:
   name: github
   repo: nagibatorunlimited-arch/baishi-website
   branch: main
-  base_url: https://baishi-website.pages.dev
-  auth_endpoint: /api/auth
 
 media_folder: images
 public_folder: images
@@ -31,7 +29,6 @@ collections:
               - { name: liti,       label: "N06 - 3D Light Shadow (立体光影)", widget: image }
               - { name: qunqun,     label: "N07 - Wall Skirting (墙裙)",       widget: image }
               - { name: huazhuan,   label: "N08 - Art Tile (花砖)",            widget: image }
-
           - name: album
             label: "2. Photo album (gallery)"
             widget: object
@@ -42,57 +39,56 @@ collections:
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: "Model code", widget: string, required: false }
+                  - { name: code, label: "Model code", widget: string, required: false }
               - name: ac
                 label: "Acoustic panels tab"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: Model code, widget: string, required: false }
+                  - { name: code, label: Model code, widget: string, required: false }
               - name: lvt
                 label: "LVT flooring tab"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: "Model code", widget: string, required: false }
+                  - { name: code, label: "Model code", widget: string, required: false }
               - name: td
                 label: "3D panels tab"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: Model code, widget: string, required: false }
+                  - { name: code, label: Model code, widget: string, required: false }
               - name: floral
                 label: "Floral wallpaper tab"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: "Model code", widget: string, required: false }
+                  - { name: code, label: "Model code", widget: string, required: false }
               - name: liti
                 label: "3D Light Shadow tab (立体光影)"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: "Model code", widget: string, required: false }
+                  - { name: code, label: "Model code", widget: string, required: false }
               - name: qunqun
                 label: "Wall Skirting tab (墙裙)"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: Model code, widget: string, required: false }
+                  - { name: code, label: Model code, widget: string, required: false }
               - name: huazhuan
                 label: "Art Tile tab (花砖)"
                 widget: list
                 summary: "{{fields.code}}"
                 fields:
                   - { name: image, label: Photo, widget: image }
-                  - { name: code,  label: "Model code", widget: string, required: false }
-
+                  - { name: code, label: "Model code", widget: string, required: false }
           - name: about
             label: "3. About page - factory and team photos"
             widget: object
