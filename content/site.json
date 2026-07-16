@@ -50,15 +50,15 @@
     ],
     "ac": [
       {
-        "image": "images/album-ac-01.jpg",
+        "image": "/images/1.jpg",
         "code": ""
       },
       {
-        "image": "images/album-ac-02.jpg",
+        "image": "/images/2.jpg",
         "code": ""
       },
       {
-        "image": "images/album-ac-03.jpg",
+        "image": "/images/11.jpg",
         "code": ""
       },
       {
@@ -86,7 +86,7 @@
         "code": ""
       },
       {
-        "image": "images/album-ac-10.jpg",
+        "image": "/images/22.jpg",
         "code": ""
       }
     ],
@@ -134,15 +134,15 @@
     ],
     "td": [
       {
-        "image": "images/album-td-01.jpg",
+        "image": "/images/BS-2016白.jpg",
         "code": ""
       },
       {
-        "image": "images/album-td-02.jpg",
+        "image": "/images/BS-2059白.jpg",
         "code": ""
       },
       {
-        "image": "images/album-td-03.jpg",
+        "image": "/images/画板 3.jpg",
         "code": ""
       }
     ]
