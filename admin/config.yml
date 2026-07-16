@@ -2,7 +2,6 @@ backend:
   name: github
   repo: nagibatorunlimited-arch/baishi-website
   branch: main
-  auth_endpoint: https://baishi-oauth.nagibatorunlimited.workers.dev/auth
 
 media_folder: images
 public_folder: images
