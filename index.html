@@ -320,6 +320,7 @@
       <a href="#products" data-ru="Каталог" data-en="Catalogue" data-zh="产品目录">Каталог</a>
       <a href="#science" data-ru="Технология" data-en="Technology" data-zh="技术">Технология</a>
       <a href="#materials" data-ru="Текстуры" data-en="Textures" data-zh="纹理">Текстуры</a>
+      <a href="about.html" data-ru="О компании" data-en="Company" data-zh="关于我们">О компании</a>
       <a href="#contact" data-ru="Контакты" data-en="Contact" data-zh="联系">Контакты</a>
     </div>
     <div class="lang">
@@ -727,6 +728,7 @@
         <a href="#products" data-ru="Акустические панели" data-en="Acoustic panels" data-zh="声学板">Акустические панели</a>
         <a href="#products" data-ru="Кварц-винил ЛВТ" data-en="LVT quartz vinyl" data-zh="LVT 石塑地板">Кварц-винил ЛВТ</a>
         <a href="#products" data-ru="3D-панели" data-en="3D panels" data-zh="3D 墙板">3D-панели</a>
+        <a href="about.html" data-ru="О компании" data-en="Company" data-zh="关于我们">О компании</a>
       </div>
       <div class="foot-col"><h5 data-ru="Контакты" data-en="Contact" data-zh="联系">Контакты</h5>
         <a href="mailto:baishidecoration@gmail.com">baishidecoration@gmail.com</a>
@@ -918,7 +920,7 @@ window.__initAlbum = function(){
   vp.addEventListener('pointerdown',function(e){sx=e.clientX;dn=true;});
   vp.addEventListener('pointerup',function(e){if(!dn)return;dn=false;var dx=e.clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);});
   var alReduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches, alTimer=null;
-  function alStart(){ if(alReduce) return; if(alTimer) clearInterval(alTimer); alTimer=setInterval(function(){ go(1); },1500); }
+  function alStart(){ if(alReduce) return; if(alTimer) clearInterval(alTimer); alTimer=setInterval(function(){ go(1); window.__preloadNext&&window.__preloadNext(); },2000); }
   function alStop(){ if(alTimer){ clearInterval(alTimer); alTimer=null; } }
   var alStage=document.querySelector('.al-stage');
   if(alStage){ alStage.addEventListener('mouseenter',alStop); alStage.addEventListener('mouseleave',alStart); }
@@ -1103,5 +1105,34 @@ var TEAM = [
     })
     .catch(function(){})
     .finally(go);
+})();
+</script>
+
+<script>
+(function(){
+  function preloadNext(){
+    var cur=document.querySelector('.al-cat.on');
+    if(!cur) return;
+    var slides=[].slice.call(cur.querySelectorAll('.al-slide'));
+    var idx=slides.findIndex(function(s){return s.classList.contains('cur');});
+    var next=slides[(idx+1)%slides.length];
+    if(!next) return;
+    var img=next.querySelector('img');
+    if(img && img.dataset.src){var i=new Image();i.src=img.dataset.src;}
+    else if(img && img.src && !img.complete){img.loading='eager';}
+  }
+  // run preload after each album advance
+  var alStage=document.querySelector('.al-stage');
+  if(alStage){
+    alStage.addEventListener('click',function(){setTimeout(preloadNext,50);});
+  }
+  // also preload on tab switch
+  document.querySelectorAll('.al-tab').forEach(function(t){
+    t.addEventListener('click',function(){setTimeout(preloadNext,100);});
+  });
+  // initial preload after page load
+  window.addEventListener('load',function(){setTimeout(preloadNext,500);});
+  // expose for album timer
+  window.__preloadNext=preloadNext;
 })();
 </script>
