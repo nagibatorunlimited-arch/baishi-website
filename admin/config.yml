@@ -21,11 +21,14 @@ collections:
             label: "1. Product cards (main page)"
             widget: object
             fields:
-              - { name: wallpaper, label: "N01 - Self-adhesive wallpaper", widget: image }
-              - { name: acoustic,  label: "N02 - Acoustic panels",         widget: image }
-              - { name: lvt,       label: "N03 - LVT flooring",            widget: image }
-              - { name: panels3d,  label: "N04 - 3D panels",               widget: image }
-              - { name: floral,    label: "N05 - Floral wallpaper",        widget: image }
+              - { name: wallpaper,  label: "N01 - Self-adhesive wallpaper",      widget: image }
+              - { name: acoustic,   label: "N02 - Acoustic panels",              widget: image }
+              - { name: lvt,        label: "N03 - LVT flooring",                 widget: image }
+              - { name: panels3d,   label: "N04 - 3D panels",                    widget: image }
+              - { name: floral,     label: "N05 - Floral wallpaper",             widget: image }
+              - { name: liti,       label: "N06 - 3D Light Shadow (立体光影)",   widget: image }
+              - { name: qunqun,     label: "N07 - Wall Skirting (墙裙)",         widget: image }
+              - { name: huazhuan,   label: "N08 - Art Tile (花砖)",              widget: image }
 
           - name: album
             label: "2. Photo album (gallery)"
@@ -66,6 +69,27 @@ collections:
                 fields:
                   - { name: image, label: Photo, widget: image }
                   - { name: code,  label: "Model code (e.g. KSJ-265032)", widget: string, required: false }
+              - name: liti
+                label: "3D Light Shadow tab (立体光影)"
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Photo, widget: image }
+                  - { name: code,  label: "Model code (e.g. KSJ-268420)", widget: string, required: false }
+              - name: qunqun
+                label: "Wall Skirting tab (墙裙)"
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Photo, widget: image }
+                  - { name: code,  label: Model code, widget: string, required: false }
+              - name: huazhuan
+                label: "Art Tile tab (花砖)"
+                widget: list
+                summary: "{{fields.code}}"
+                fields:
+                  - { name: image, label: Photo, widget: image }
+                  - { name: code,  label: "Model code (e.g. KSJ-259232)", widget: string, required: false }
 
           - name: about
             label: "3. About page - factory and team photos"
