@@ -4,7 +4,10 @@
     "acoustic": "images/card-acoustic.jpg",
     "lvt": "images/card-lvt.jpg",
     "panels3d": "images/card-panels3d.jpg",
-    "floral": "/images/KSJ-265032.jpg"
+    "floral": "/images/KSJ-265032.jpg",
+    "liti": "/images/KSJ-268420.jpg",
+    "qunqun": "/images/10.png",
+    "huazhuan": "/images/KSJ-259232.jpeg"
   },
   "album": {
     "wp": [
@@ -186,6 +189,78 @@
       },
       {
         "image": "/images/KSJ-265016.jpg",
+        "code": ""
+      }
+    ],
+    "liti": [
+      {
+        "image": "/images/KSJ-268398.jpg",
+        "code": "KSJ-268398"
+      },
+      {
+        "image": "/images/KSJ-268410.jpg",
+        "code": "KSJ-268410"
+      },
+      {
+        "image": "/images/KSJ-268411.jpg",
+        "code": "KSJ-268411"
+      },
+      {
+        "image": "/images/KSJ-268412.jpg",
+        "code": "KSJ-268412"
+      },
+      {
+        "image": "/images/KSJ-268413.jpg",
+        "code": "KSJ-268413"
+      },
+      {
+        "image": "/images/KSJ-268414.jpg",
+        "code": "KSJ-268414"
+      },
+      {
+        "image": "/images/KSJ-268415.jpg",
+        "code": "KSJ-268415"
+      },
+      {
+        "image": "/images/KSJ-268416.jpg",
+        "code": "KSJ-268416"
+      },
+      {
+        "image": "/images/KSJ-268417.jpg",
+        "code": "KSJ-268417"
+      },
+      {
+        "image": "/images/KSJ-268418.jpg",
+        "code": "KSJ-268418"
+      }
+    ],
+    "qunqun": [
+      {
+        "image": "/images/7.png",
+        "code": ""
+      },
+      {
+        "image": "/images/10.png",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-263762.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-263763.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-263764.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-263765.jpg",
+        "code": ""
+      },
+      {
+        "image": "/images/KSJ-263768.jpg",
         "code": ""
       }
     ]
