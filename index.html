@@ -242,6 +242,17 @@
   .cmodal-x{position:absolute;top:12px;right:16px;background:none;border:0;font-size:1.7rem;line-height:1;color:var(--ink);cursor:pointer;opacity:.55;transition:opacity .25s}
   .cmodal-x:hover{opacity:1}
   .cmodal-list{display:flex;flex-direction:column;gap:10px}
+  .rt-label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--walnut);margin:18px 0 6px;font-weight:700}
+  .rt-country{width:100%;font-family:var(--grotesk);font-size:.92rem;color:var(--ink);background:var(--cream-2);border:1px solid rgba(35,25,15,.18);border-radius:6px;padding:11px 14px;cursor:pointer}
+  .rt-cats{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+  .rt-cat{font-family:var(--grotesk);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--walnut);background:transparent;border:1px solid rgba(35,25,15,.18);border-radius:40px;padding:7px 14px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+  .rt-cat:hover{border-color:var(--gold)}
+  .rt-cat.on{background:var(--gold);color:var(--forest);border-color:var(--gold)}
+  .rt-manager{display:flex;align-items:center;gap:12px;margin:20px 0 14px;padding-top:16px;border-top:1px solid rgba(35,25,15,.12)}
+  .rt-av{flex:0 0 auto;width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;color:var(--walnut)}
+  .rt-who{display:flex;flex-direction:column;line-height:1.3}
+  .rt-who b{font-family:var(--display);font-weight:600;font-size:1rem}
+  .rt-who i{font-style:normal;font-size:.8rem;color:rgba(35,25,15,.6)}
   .crow{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid rgba(35,25,15,.14);border-radius:6px;transition:border-color .25s,background .25s,transform .25s}
   .crow:hover{border-color:var(--gold);background:rgba(199,161,74,.08);transform:translateX(3px)}
   .crow-ic{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--walnut);font-size:1rem}
@@ -822,25 +833,28 @@
     <button class="cmodal-x" data-close aria-label="Закрыть">×</button>
     <span class="eyebrow" data-ru="Связаться" data-en="Get in touch" data-zh="联系我们">Связаться</span>
     <h3 class="cmodal-title">BAISHI <span style="color:var(--gold)">•</span> Innovations</h3>
-    <p class="cmodal-sub" data-ru="Выберите удобный способ — ответим оперативно." data-en="Choose a channel — we reply promptly." data-zh="请选择合适的联系方式——我们会尽快回复。">Выберите удобный способ — ответим оперативно.</p>
-    <div class="cmodal-list">
-      <a class="crow" href="mailto:baishidecoration@gmail.com">
-        <span class="crow-ic">✉</span>
-        <span class="crow-tx"><b data-ru="Эл. почта" data-en="Email" data-zh="邮箱">Эл. почта</b><i>baishidecoration@gmail.com</i></span>
-      </a>
-      <a class="crow" href="https://wa.me/8615951653936" target="_blank" rel="noopener">
-        <span class="crow-ic">W</span>
-        <span class="crow-tx"><b>WhatsApp</b><i>+86 159 5165 3936</i></span>
-      </a>
-      <a class="crow" href="tel:+8615951653936">
-        <span class="crow-ic">☎</span>
-        <span class="crow-tx"><b data-ru="Телефон" data-en="Phone" data-zh="电话">Телефон</b><i>+86 159 5165 3936</i></span>
-      </a>
-      <a class="crow" href="https://www.youtube.com/@BaishiDecoration" target="_blank" rel="noopener">
-        <span class="crow-ic">▶</span>
-        <span class="crow-tx"><b>YouTube</b><i>@BaishiDecoration</i></span>
-      </a>
+    <p class="cmodal-sub" data-ru="Откуда вы — подберём менеджера и каталог." data-en="Tell us where you are — we'll match a manager and catalogue." data-zh="告诉我们您的位置——我们将为您匹配经理和产品目录。">Откуда вы — подберём менеджера и каталог.</p>
+
+    <label class="rt-label" data-ru="Ваша страна" data-en="Your country" data-zh="您的国家">Ваша страна</label>
+    <select class="rt-country" id="rtCountry"></select>
+
+    <div class="rt-cats" id="rtCats">
+      <button type="button" class="rt-cat on" data-cat="wallpaper" data-ru="Обои" data-en="Wallpaper" data-zh="墙纸">Обои</button>
+      <button type="button" class="rt-cat" data-cat="acoustic" data-ru="Акустика" data-en="Acoustic" data-zh="声学板">Акустика</button>
+      <button type="button" class="rt-cat" data-cat="lvt" data-ru="ЛВТ" data-en="LVT" data-zh="LVT">ЛВТ</button>
+      <button type="button" class="rt-cat" data-cat="panels3d" data-ru="3D-панели" data-en="3D panels" data-zh="3D 墙板">3D-панели</button>
+      <button type="button" class="rt-cat" data-cat="floral" data-ru="Цветы" data-en="Floral" data-zh="花卉">Цветы</button>
+      <button type="button" class="rt-cat" data-cat="liti" data-ru="Светотень" data-en="Light &amp; Shadow" data-zh="立体光影">Светотень</button>
+      <button type="button" class="rt-cat" data-cat="qunqun" data-ru="Плинтус" data-en="Skirting" data-zh="墙裙">Плинтус</button>
+      <button type="button" class="rt-cat" data-cat="huazhuan" data-ru="花砖" data-en="Art tile" data-zh="花砖">花砖</button>
     </div>
+
+    <div class="rt-manager">
+      <span class="rt-av" id="rtAv">B</span>
+      <span class="rt-who"><b id="rtName">BAISHI</b><i id="rtRole"></i></span>
+    </div>
+
+    <div class="cmodal-list" id="rtLinks"></div>
   </div>
 </div>
 
@@ -1102,6 +1116,42 @@ window.__initAlbum = function(){
 <script>
 var TEAM = [
   {
+    name: 'Анна Ли',
+    role: {ru:'Менеджер по СНГ', en:'CIS manager', zh:'独联体经理'},
+    countries: ['RU','KZ','BY','UZ','KG','AM','AZ','GE','MD','TJ','TM','UA'],
+    categories: ['*'],
+    whatsapp: '8615951653936',
+    wechat:   'baishi_anna',
+    email:    'anna@baishi.com',
+    phone:    '+8615951653936'
+  },
+  {
+    name: 'Анна',
+    role: {ru:'Менеджер по Азии, Африке, Океании и Ближнему Востоку', en:'Asia, Africa, Oceania & Middle East manager', zh:'亚洲、非洲、大洋洲和中东经理'},
+    countries: ['IN','ID','MY','PH','SG','TH','VN','MM','KH','LA','BN','TL',
+      'AE','BH','IL','IQ','IR','JO','KW','LB','OM','PS','QA','SA','SY','TR','YE',
+      'DZ','AO','BJ','BW','BF','BI','CV','CM','CF','TD','KM','CG','CD','CI','DJ','EG','GQ','ER','SZ','ET','GA','GM','GH','GN','GW','KE','LS','LR','LY','MG','MW','ML','MR','MU','MA','MZ','NA','NE','NG','RW','ST','SN','SC','SL','SO','ZA','SS','SD','TZ','TG','TN','UG','ZM','ZW',
+      'NZ','FJ','PG','WS','TO','VU','SB','KI','FM','MH','NR','PW'],
+    categories: ['*'],
+    whatsapp: '8613357531756',
+    wechat:   '13357531756',
+    email:    '',
+    phone:    '+86 133 5753 1756'
+  },
+  {
+    name: 'LEO CUI',
+    role: {ru:'Менеджер по Америке, Европе и Австралии', en:'Americas, Europe & Australia manager', zh:'美洲、欧洲和澳大利亚经理'},
+    countries: ['US','CA','MX','GT','BZ','SV','HN','NI','CR','PA','CU','DO','HT','JM','TT','BS','BB',
+      'AR','BO','BR','CL','CO','EC','GY','PY','PE','SR','UY','VE',
+      'AL','AD','AT','BE','BA','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','MC','ME','NL','MK','NO','PL','PT','RO','RS','SK','SI','ES','SE','CH','GB','VA','SM',
+      'AU'],
+    categories: ['*'],
+    whatsapp: '8618106851586',
+    wechat:   '8618106851586',
+    email:    'baishi889911@gmail.com',
+    phone:    '+86 181 0685 1586'
+  },
+  {
     name: 'BAISHI',
     role: {ru:'Отдел продаж', en:'Sales team', zh:'销售部'},
     countries: ['*'],
@@ -1114,7 +1164,7 @@ var TEAM = [
 ];
 
 (function(){
-  var CODES = ('AE AF AL AM AO AR AT AU AZ BA BD BE BG BH BR BY CA CH CL CN CO CY CZ DE DK DZ EC EE EG ES ET FI FR GB GE GH GR HK HR HU ID IE IL IN IQ IR IS IT JO JP KE KG KH KR KW KZ LA LB LK LT LU LV MA MD MK MM MN MT MX MY NG NL NO NP NZ OM PE PH PK PL PT QA RO RS RU SA SE SG SI SK TH TJ TM TN TR TW UA UG US UZ VN ZA').split(' ');
+  var CODES = ('AD AE AF AG AI AL AM AO AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CK CL CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GI GM GN GQ GR GT GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PF PG PH PK PL PS PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TD TG TH TJ TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VN VU WS YE ZA ZM ZW').split(' ');
   var sel=document.getElementById('rtCountry');
   var cats=document.getElementById('rtCats');
   var links=document.getElementById('rtLinks');
