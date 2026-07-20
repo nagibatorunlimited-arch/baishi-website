@@ -1116,16 +1116,6 @@ window.__initAlbum = function(){
 <script>
 var TEAM = [
   {
-    name: 'Анна Ли',
-    role: {ru:'Менеджер по СНГ', en:'CIS manager', zh:'独联体经理'},
-    countries: ['RU','KZ','BY','UZ','KG','AM','AZ','GE','MD','TJ','TM','UA'],
-    categories: ['*'],
-    whatsapp: '8615951653936',
-    wechat:   'baishi_anna',
-    email:    'anna@baishi.com',
-    phone:    '+8615951653936'
-  },
-  {
     name: 'Анна',
     role: {ru:'Менеджер по Азии, Африке, Океании и Ближнему Востоку', en:'Asia, Africa, Oceania & Middle East manager', zh:'亚洲、非洲、大洋洲和中东经理'},
     countries: ['IN','ID','MY','PH','SG','TH','VN','MM','KH','LA','BN','TL',
@@ -1152,16 +1142,27 @@ var TEAM = [
     phone:    '+86 181 0685 1586'
   },
   {
-    name: 'BAISHI',
+    name: 'Frank',
     role: {ru:'Отдел продаж', en:'Sales team', zh:'销售部'},
-    countries: ['*'],
+    countries: [],
     categories: ['*'],
     whatsapp: '8615951653936',
     wechat:   '',
     email:    'baishidecoration@gmail.com',
     phone:    '+8615951653936'
+  },
+  {
+    name: 'Кловер',
+    role: {ru:'Отдел продаж', en:'Sales team', zh:'销售部'},
+    countries: [],
+    categories: ['*'],
+    whatsapp: '8615267350653',
+    wechat:   '',
+    email:    '',
+    phone:    '+86 152 6735 0653'
   }
 ];
+var ROTATION = ['Frank','Анна','LEO CUI','Кловер'];
 
 (function(){
   var CODES = ('AD AE AF AG AI AL AM AO AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CK CL CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GI GM GN GQ GR GT GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PF PG PH PK PL PS PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TD TG TH TJ TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VN VU WS YE ZA ZM ZW').split(' ');
@@ -1185,21 +1186,36 @@ var TEAM = [
   var cat='wallpaper';
   cats.addEventListener('click',function(e){var b=e.target.closest('.rt-cat');if(!b)return;cats.querySelectorAll('.rt-cat').forEach(function(x){x.classList.remove('on');});b.classList.add('on');cat=b.getAttribute('data-cat');route();});
   sel.addEventListener('change',function(){try{localStorage.setItem('baishi_country',sel.value);}catch(e){}route();});
-  function pick(country,category){for(var i=0;i<TEAM.length;i++){var m=TEAM[i];var okC=m.countries.indexOf('*')>=0||m.countries.indexOf(country)>=0;var okK=m.categories.indexOf('*')>=0||m.categories.indexOf(category)>=0;if(okC&&okK)return m;}return TEAM[TEAM.length-1];}
+  function findByName(n){for(var i=0;i<TEAM.length;i++){if(TEAM[i].name===n)return TEAM[i];}return TEAM[0];}
+  function pickDedicated(country){for(var i=0;i<TEAM.length;i++){var m=TEAM[i];if(m.countries&&m.countries.length&&m.countries.indexOf(country)>=0)return m;}return null;}
+  function resolveManager(country,cb){
+    var d=pickDedicated(country);
+    if(d){cb(d);return;}
+    var cached=null;try{cached=localStorage.getItem('baishi_rr_manager');}catch(e){}
+    if(cached){cb(findByName(cached));return;}
+    fetch('/api/next-manager').then(function(r){return r.json();}).then(function(d2){
+      var idx=((d2&&d2.index)||0)%ROTATION.length;
+      var name=ROTATION[idx];
+      try{localStorage.setItem('baishi_rr_manager',name);}catch(e){}
+      cb(findByName(name));
+    }).catch(function(){ cb(findByName('Frank')); });
+  }
   var LBL={ru:{email:'Эл. почта',phone:'Телефон',wechat:'WeChat'},en:{email:'Email',phone:'Phone',wechat:'WeChat'},zh:{email:'邮箱',phone:'电话',wechat:'微信'}};
   var CATNAME={wallpaper:{ru:'Самоклеящиеся обои',en:'Self-adhesive wallpaper',zh:'自粘墙纸'},acoustic:{ru:'Акустические панели',en:'Acoustic panels',zh:'声学板'},lvt:{ru:'ЛВТ (напольное покрытие)',en:'LVT flooring',zh:'LVT 地板'},panels3d:{ru:'3D-панели',en:'3D wall panels',zh:'3D 墙板'},floral:{ru:'Обои «Цветы»',en:'Floral wallpaper',zh:'花卉系列'},liti:{ru:'Панели «Светотень»',en:'3D Light & Shadow',zh:'立体光影'},qunqun:{ru:'Декоративный плинтус (墙裙)',en:'Wall Skirting Panel',zh:'墙裙'},huazhuan:{ru:'Художественная плитка (花砖)',en:'Decorative Art Tile',zh:'花砖'}};
   function route(){
-    var lang=curLang();var country=sel.value;var m=pick(country,cat);var cName=country==='XX'?'':countryName(country,lang);
-    nameEl.textContent=m.name;roleEl.textContent=(m.role&&m.role[lang])||'';avEl.textContent=(m.name||'B').trim().charAt(0).toUpperCase();
-    var msg=(lang==='zh'?'您好！我来自'+cName+'，想咨询'+(CATNAME[cat]&&CATNAME[cat].zh||cat)+'的报价与目录。':(lang==='en'?'Hello! I\'m from '+cName+' and I\'d like prices and the catalogue for '+(CATNAME[cat]&&CATNAME[cat].en||cat)+'.':'Здравствуйте! Я из страны: '+cName+'. Интересует: '+(CATNAME[cat]&&CATNAME[cat].ru||cat)+'. Пришлите каталог и цены.'));
-    var enc=encodeURIComponent(msg);var subj=encodeURIComponent('BAISHI — '+(CATNAME[cat]&&CATNAME[cat][lang]||cat)+(cName?(' / '+cName):''));
-    var rows=[];
-    if(m.whatsapp)rows.push('<a class="crow" href="https://wa.me/'+m.whatsapp+'?text='+enc+'" target="_blank" rel="noopener"><span class="crow-ic">W</span><span class="crow-tx"><b>WhatsApp</b><i>+'+m.whatsapp+'</i></span></a>');
-    if(m.wechat)rows.push('<a class="crow" href="#" onclick="return false"><span class="crow-ic">微</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].wechat||'WeChat')+'</b><i>'+m.wechat+'</i></span></a>');
-    if(m.email)rows.push('<a class="crow" href="mailto:'+m.email+'?subject='+subj+'&body='+enc+'"><span class="crow-ic">✉</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].email||'Email')+'</b><i>'+m.email+'</i></span></a>');
-    if(m.phone)rows.push('<a class="crow" href="tel:'+m.phone.replace(/\s/g,'')+'"><span class="crow-ic">☎</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].phone||'Phone')+'</b><i>'+m.phone+'</i></span></a>');
-    rows.push('<a class="crow" href="https://www.youtube.com/@BaishiDecoration" target="_blank" rel="noopener"><span class="crow-ic">▶</span><span class="crow-tx"><b>YouTube</b><i>@BaishiDecoration</i></span></a>');
-    links.innerHTML=rows.join('');
+    var lang=curLang();var country=sel.value;var cName=country==='XX'?'':countryName(country,lang);
+    resolveManager(country,function(m){
+      nameEl.textContent=m.name;roleEl.textContent=(m.role&&m.role[lang])||'';avEl.textContent=(m.name||'B').trim().charAt(0).toUpperCase();
+      var msg=(lang==='zh'?'您好！我来自'+cName+'，想咨询'+(CATNAME[cat]&&CATNAME[cat].zh||cat)+'的报价与目录。':(lang==='en'?'Hello! I\'m from '+cName+' and I\'d like prices and the catalogue for '+(CATNAME[cat]&&CATNAME[cat].en||cat)+'.':'Здравствуйте! Я из страны: '+cName+'. Интересует: '+(CATNAME[cat]&&CATNAME[cat].ru||cat)+'. Пришлите каталог и цены.'));
+      var enc=encodeURIComponent(msg);var subj=encodeURIComponent('BAISHI — '+(CATNAME[cat]&&CATNAME[cat][lang]||cat)+(cName?(' / '+cName):''));
+      var rows=[];
+      if(m.whatsapp)rows.push('<a class="crow" href="https://wa.me/'+m.whatsapp+'?text='+enc+'" target="_blank" rel="noopener"><span class="crow-ic">W</span><span class="crow-tx"><b>WhatsApp</b><i>+'+m.whatsapp+'</i></span></a>');
+      if(m.wechat)rows.push('<a class="crow" href="#" onclick="return false"><span class="crow-ic">微</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].wechat||'WeChat')+'</b><i>'+m.wechat+'</i></span></a>');
+      if(m.email)rows.push('<a class="crow" href="mailto:'+m.email+'?subject='+subj+'&body='+enc+'"><span class="crow-ic">✉</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].email||'Email')+'</b><i>'+m.email+'</i></span></a>');
+      if(m.phone)rows.push('<a class="crow" href="tel:'+m.phone.replace(/\s/g,'')+'"><span class="crow-ic">☎</span><span class="crow-tx"><b>'+(LBL[lang]&&LBL[lang].phone||'Phone')+'</b><i>'+m.phone+'</i></span></a>');
+      rows.push('<a class="crow" href="https://www.youtube.com/@BaishiDecoration" target="_blank" rel="noopener"><span class="crow-ic">▶</span><span class="crow-tx"><b>YouTube</b><i>@BaishiDecoration</i></span></a>');
+      links.innerHTML=rows.join('');
+    });
   }
   document.querySelectorAll('[data-open-cat]').forEach(function(el){el.addEventListener('click',function(){var c=el.getAttribute('data-open-cat');var b=cats.querySelector('.rt-cat[data-cat="'+c+'"]');if(b){cats.querySelectorAll('.rt-cat').forEach(function(x){x.classList.remove('on');});b.classList.add('on');cat=c;}route();});});
   ['ru','en','zh'].forEach(function(l){var b=document.getElementById(l);if(b)b.addEventListener('click',function(){var c=sel.value;fillCountries(c);route();});});
